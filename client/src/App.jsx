@@ -11,12 +11,22 @@ import Login from './pages/Login'
 import {useUser, useAuth} from '@clerk/clerk-react'
 import Layout from './pages/Layout'
 import {Toaster} from 'react-hot-toast'
+import { useEffect } from 'react'
 
 const App = () => {
 
     const { isLoaded, user } = useUser();
+    const {getToken} = useAuth();
+        useEffect(() => {
+  if (user) {
+    getToken().then((t) => console.log("JWT token:", t));
+  }
+}, [user]);
 
     if (!isLoaded) return <div>Loading...</div>; // Wait for Clerk to load
+
+
+
 
 
   return (
