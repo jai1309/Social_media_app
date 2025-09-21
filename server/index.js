@@ -23,8 +23,8 @@ app.use(clerkMiddleware())
 app.use("/api/inngest", serve({ client: inngest, functions }));
 app.use('/api/user',userRouter)
 app.use('/api/post', postRouter)
-app.use('/api/post', storyRouter)
-app.use('/api/post', messageRouter);
+app.use('/api/story', storyRouter)
+app.use('/api/message', messageRouter);
 
 
 

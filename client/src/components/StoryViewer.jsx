@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react'
 const StoryViewer = ({viewStory, setViewStory}) => {
 
     const [progress, setProgress] = useState(0)
-    
-        useEffect(()=>{
+
+    useEffect(()=>{
         let timer, progressInterval;
 
         if(viewStory && viewStory.media_type !== 'video'){
@@ -37,7 +37,7 @@ const StoryViewer = ({viewStory, setViewStory}) => {
         setViewStory(null)
     }
 
-     if(!viewStory) return null
+    if(!viewStory) return null
 
     const renderContent = ()=>{
         switch (viewStory.media_type) {
@@ -63,13 +63,13 @@ const StoryViewer = ({viewStory, setViewStory}) => {
 
   return (
     <div className='fixed inset-0 h-screen bg-black bg-opacity-90 z-110 flex items-center justify-center' style={{backgroundColor: viewStory.media_type === 'text' ? viewStory.background_color : '#000000'}}>
-
-        {/* Progress Bar */}
+      
+      {/* Progress Bar */}
       <div className='absolute top-0 left-0 w-full h-1 bg-gray-700'>
         <div className='h-full bg-white transition-all duration-100 linear' style={{width: `${progress}%`}}>
+
         </div>
       </div>
-
       {/* User Info - Top Left */}
       <div className='absolute top-4 left-4 flex items-center space-x-3 p-2 px-4 sm:p-4 sm:px-8 backdrop-blur-2xl rounded bg-black/50'>
         <img src={viewStory.user?.profile_picture} alt="" className='ize-7 sm:size-8 rounded-full object-cover border border-white'/>
@@ -79,16 +79,15 @@ const StoryViewer = ({viewStory, setViewStory}) => {
         </div>
       </div>
 
-    {/* Close Button */}
+       {/* Close Button */}
        <button onClick={handleClose} className='absolute top-4 right-4 text-white text-3xl font-bold focus:outline-none'>
         <X className='w-8 h-8 hover:scale-110 transition cursor-pointer'/>
        </button>
 
-    {/* Content Wrapper */}
+       {/* Content Wrapper */}
        <div className='max-w-[90vw] max-h-[90vh] flex items-center justify-center'>
             {renderContent()}
        </div>
-
     </div>
   )
 }
