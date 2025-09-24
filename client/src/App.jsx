@@ -29,8 +29,7 @@ const App = () => {
   useEffect(()=>{
     const fetchData = async () => {
       if(user){
-      const token = await getToken()
-      console.log("Auth Token:", token)
+      const token = await getToken();
       dispatch(fetchUser(token))
       dispatch(fetchConnections(token))
       }
